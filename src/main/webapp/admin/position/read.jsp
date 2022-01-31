@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Cleaner,models.Position"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="frensh">
   <head>
@@ -414,30 +414,38 @@
                         <thead>
                           <tr>
                             <th class="text-center">numéro</th>
-                            <th>ville</th>
-                            <th class="text-end">Quartier</th>
-                            <th class="text-end">Localisation</th>
-                            <th class="text-end">Eboueur chargé</th>
-                            <th class="text-end">Options</th>
+                            <th class="text-center">ville</th>
+                            <th class="text-center">Quartier</th>
+                            <th class="text-center">Localisation</th>
+                            <th class="text-center">Eboueur chargé</th>
+                            <th class="text-center">Options</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="text-center">1</td>
-                            <td>Meknès</td>
-                            <td class="text-end"> anassi </td>
-                            <td class="text-end">lotis taha, riad al ismailia</td>
-                            <td class="text-end">mohammed</td>
-                            <td class="text-end">
+                          
+                          <% PositionService positionService = new PositionService();
+                            List<Position> listPositions = positionService.readAllPositions(); %>
+                            <%int i=1; %>
+                            <%for(Position position:listPositions){ %>
+                            <%int cleanerId = position.getEboueurCharge(); %>
+                            <%Cleaner cleaner = positionService.getOneCleaner(cleanerId); %>
+                           <tr> 
+                            <td class="text-center"><%=i %></td>
+                            <td class="text-center"><%=position.getVille() %></td>
+                            <td class="text-center"><%=position.getQuartier()%> </td>
+                            <td class="text-center"><%=position.getLocalisation() %></td>
+                            <td class="text-center"><%=cleaner.getNom() %></td>
+                            <td class="text-center">
                             <button type="button" class=" badge bg-danger " >
                             <i class="fas fa-trash-alt"></i> 
                             </button>
                             <button type="button" class=" badge bg-info " > 
                             <i class="far fa-edit"></i>
                             </button>
-                            
                             </td>
                           </tr>
+                          <%i++;%>
+                          <%}%>
                           
                         </tbody>
                       </table>

@@ -432,24 +432,7 @@
                       </select>
                     
                       </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                    <label class="col-md-3 mt-3">Opération</label>
-                    <div class="col-md-9">
-                      <div>
-                      <input type="radio" id="soustraction" value="soustraction" name="sexe" checked />
-                      <label for="soustraction">soustraction</label>
-                      </div>
-                      
-                      <div>                      
-                      <input type="radio" id="addition" value="addition" name="sexe" />
-                      <label for="addition">addition</label>
-                      </div>
-                      
-                    </div>
-                  </div>
-                    
+                    </div>                            
                     
                     <div class="form-group row">
                       <label class="col-md-3 mt-3">Quantité ( en kg )</label>

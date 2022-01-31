@@ -1,0 +1,14 @@
+#stars {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 2rem;
+}
+
+.star i {
+	font-size: 3rem;
+	color: #8BC34A;
+}
+
+.star i.fa-star {
+	display: none;	
+}

@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.*;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,7 @@ import services.LoginService;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	private LoginService loginService;
 	
 	public LoginController() {

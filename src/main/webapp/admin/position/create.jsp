@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Cleaner" %>
 
 <html dir="ltr" lang="frensh">
   <head>
@@ -402,11 +402,11 @@
         <div class="container-fluid">
         
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
             
               <div class="card">
            
-                <form class="form-horizontal">
+                <form action="/CleanUp/addPosition"  method="post" class="form-horizontal" >
                   <div class="card-body">
                     <h4 class="card-title">Information du point de récupération</h4>
                     <br>
@@ -418,6 +418,7 @@
                           type="text"
                           class="form-control"
                           id="fname"
+                          name="ville"
                           placeholder="Insérer la ville ici"
                         />
                       </div>
@@ -429,6 +430,7 @@
                           type="text"
                           class="form-control"
                           id="lname"
+                          name="quartier"
                           placeholder="Insérer le quartier ici "
                         />
                       </div>
@@ -437,9 +439,10 @@
                       <label class="col-md-3 mt-3" >Localisation</label>
                       <div class="col-sm-9">
                         <input
-                          type="password"
+                          type="text"
                           class="form-control"
                           id="lname"
+                          name="localisation"
                           placeholder="Insérer la localisation exacte ici"
                         />
                       </div>
@@ -451,12 +454,20 @@
                     <div class="col-md-9">
                       <select
                         class="select2 form-select shadow-none"
+                        name="eboueur_charge"
                         style="width: 100%; height: 36px"
                       >
                       <option>Selectionner </option>
-                      <option >Mohammed</option>
-                      <option>Ahmed</option>
-
+                      
+                      <%
+                      PositionService positionservice = new PositionService();
+                      List<Cleaner> listCleaners = positionservice.getAllCleaners();
+                      int i=0;%>
+                      <%while( i < listCleaners.size() ){%>
+                      <% Cleaner cleaner = listCleaners.get(i);%>                      
+                      <option value="<%=cleaner.getCleanerId()%>"><%=cleaner.getNom()%></option>
+                      <%i++;%>
+                     <%}%>
                       </select>
                     </div>
                   </div>
@@ -471,35 +482,7 @@
                   </div>
                 </form>
               </div>
-         </div>
-         
-         
-         
-         
-         <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-0"> Rechercher l'adresse</h5>
-                  
-                  
-                  <h1> Google maps API</h1>
-                  
-                  
-                  
-                  
-                <div class="border-top">
-                    <div class="card-body">
-                      <button type="submit" class="btn btn-primary">
-                        Enregistrer
-                      </button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-         
-      </div>   
-         
+         </div>         
          
       </div>
     </div>

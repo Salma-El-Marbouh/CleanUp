@@ -475,24 +475,7 @@
                     
                       </div>
                     </div> 
-                         
-                                       
-                    <div class="form-group row">
-                      <label class="col-md-3 mt-3" >Adresses de ramassage</label>
-                      <div class="col-sm-9">
-                      <select
-                        class="select2 form-select shadow-none"
-                        style="width: 100%; height: 36px"
-                      >
-                      <option>Selectionner </option>
-                      <option >Anassi</option>
-                      <option>lmansour</option>
-
-                      </select>
-                    
-                      </div>
-                    </div>
-                                     
+                                                          
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">

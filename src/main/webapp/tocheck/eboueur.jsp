@@ -627,7 +627,7 @@
             
               <div class="card">
            
-                <form class="form-horizontal" method="post" action="../java/Ajouter.java">
+                <form class="form-horizontal" method="post" action="../java/Ajouter">
                   <div class="card-body">
                     <h4 class="card-title">Informations de l'�boueur </h4>
                     <br>

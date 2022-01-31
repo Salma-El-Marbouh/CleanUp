@@ -1,11 +1,11 @@
 package models;
 
 public class Position {
-	private int id;
+	private int position_id;
 	private String ville;
 	private String quartier;
 	private String localisation;
-	private String eboueurCharge;
+	private int eboueur_charge;
 	
 	
 	
@@ -13,20 +13,15 @@ public class Position {
 		super();
 	}
 	
-	public Position(int id, String ville, String quartier, String localisation, String eboueurCharge) {
-		this.id = id;
+	public Position(String ville, String quartier, String localisation, int eboueur_charge) {
 		this.setVille(ville);
 		this.setQuartier(quartier);
 		this.setLocalisation(localisation);
-		this.setEboueurCharge(eboueurCharge);
+		this.setEboueurCharge(eboueur_charge);
 	}
 	
 	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
+		return position_id;
 	}
 
 	public String getVille() {
@@ -53,12 +48,12 @@ public class Position {
 		this.localisation = localisation;
 	}
 
-	public String getEboueurCharge() {
-		return eboueurCharge;
+	public int getEboueurCharge() {
+		return eboueur_charge;
 	}
 
-	public void setEboueurCharge(String eboueurCharge) {
-		this.eboueurCharge = eboueurCharge;
+	public void setEboueurCharge(int eboueurCharge) {
+		this.eboueur_charge = eboueurCharge;
 	}	
 }
 

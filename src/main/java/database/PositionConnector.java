@@ -21,12 +21,11 @@ public class PositionConnector {
 	public boolean createPosition (Position position) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("INSERT INTO position VALUES (?);");
-			ps.setLong(1,position.getId());
-			ps.setString(2,position.getVille());
-			ps.setString(3,position.getQuartier());
-			ps.setString(4,position.getLocalisation());
-			ps.setString(5,position.getEboueurCharge());
+			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `position` (`ville`, `quartier`,`localisation`,`eboueur_charge`) VALUES (?,?,?,?)");
+			ps.setString(1,position.getVille());
+			ps.setString(2,position.getQuartier());
+			ps.setString(3,position.getLocalisation());
+			ps.setLong(4,position.getEboueurCharge());
 			ps.executeUpdate();	
 			System.out.println("creation succeeded !");
 			return true;
@@ -47,18 +46,17 @@ public class PositionConnector {
 		Position position = null;
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("SELECT * FROM position WHERE id=? ;");
+			PreparedStatement ps = cnx.prepareStatement("SELECT * FROM `position` WHERE position_id=? ;");
 			ps.setLong(1, id1 );
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				int id = rs.getInt("id");
 				String ville = rs.getString("ville");
 				String quartier = rs.getString("quartier");
 				String localisation = rs.getString("localisation");
-				String eboueurCharge = rs.getString("eboueurCharge");
+				int eboueur_charge = rs.getInt("eboueur_charge");
 				System.out.println("we got it !");
-				position = new Position(id, ville, quartier, localisation, eboueurCharge);
+				position = new Position(ville, quartier, localisation, eboueur_charge);
 				System.out.println("we got it 2 !");
 								
 			}
@@ -81,15 +79,14 @@ public class PositionConnector {
 		
 		ArrayList<Position> list_Positions = new ArrayList<Position>();
 		try {
-			PreparedStatement ps = cnx.prepareStatement("select * from Position");
+			PreparedStatement ps = cnx.prepareStatement("select * from `position`");
 			ResultSet st = ps.executeQuery();
 			while(st.next()) {
 				Position e = new Position();
-				e.setId(st.getInt("id"));
 	        	e.setVille(st.getString("ville"));
 	            e.setQuartier(st.getString("quartier"));
 	            e.setLocalisation( st.getString("localisation"));
-	            e.setEboueurCharge(st.getString("eboueurCharge"));
+	            e.setEboueurCharge(st.getInt("eboueur_charge"));
 	            list_Positions.add(e);
 			}
 			cnx.close();
@@ -107,11 +104,11 @@ public class PositionConnector {
 	public boolean updatePosition(Position position ) {
 			
 		try {
-			PreparedStatement ps = cnx.prepareStatement("UPDATE position SET ville=?, quartier=?, localisation=?, eboueurCharge=? WHERE id=?;");
+			PreparedStatement ps = cnx.prepareStatement("UPDATE `position` SET ville=?, quartier=?, localisation=?, eboueur_charge=? WHERE position_id=?;");
 			ps.setString(1, position.getVille());
 			ps.setString(2, position.getQuartier());
-			ps.setString(2, position.getLocalisation());
-			ps.setString(2, position.getEboueurCharge());
+			ps.setString(3, position.getLocalisation());
+			ps.setInt(4, position.getEboueurCharge());
 			ps.setLong(5, position.getId());
 			int i = ps.executeUpdate();
               System.out.println("updated successfully!");
@@ -135,7 +132,7 @@ public class PositionConnector {
 	public boolean deletePosition(Position position) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("DELETE position WHERE id=?;");
+			PreparedStatement ps = cnx.prepareStatement("DELETE `position` WHERE position_id=?;");
 			ps.setLong(1, position.getId());
 			int i = ps.executeUpdate();
               System.out.println("deleted successfully!");

@@ -20,7 +20,9 @@
 <link rel="stylesheet" href="ressources/css/responsive.css">
 <link rel="stylesheet" href="ressources/css/font-icon.css">
 <link rel="stylesheet" href="ressources/css/animate.min.css"> 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="ressources/css/home.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script> 
 </head>
 
 <body>
@@ -99,17 +101,129 @@
 
 <!-- stock section -->
 <section id="gallery" class="gallery section">
-  <div class="container-fluid">
+  <div class="container">
     <div class="section-header">
                 <h2 class="wow fadeInDown animated">Stock</h2>
                 <p class="wow fadeInDown animated">Vous pouvez suivre la variation de notre stock à tout moment dans cette section.</p>
             </div>
-    <div class="row no-gutter">
-      
-          
-        </div>
-
-  </div>
+    
+    <div class="row">
+    <section id="content-3-10" class="content-block data-section nopad content-3-9">
+	<div class="container-fluid">
+		<div class="row">
+		    
+			<div class="col-md-6">
+			<div class="card">
+			<div class="card-body">
+			<h5 class="text-center ">Stock des déchets :</h5>
+			</div>     
+			<div class="card-body">
+			    <canvas id="myChart"></canvas>
+			</div>
+			</div>
+			<div>
+			<script>
+                  const ctx = document.getElementById('myChart').getContext('2d');
+                  const myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                  labels: ['Papier', 'Metal', 'Plastique', 'Verre', 'Organique', 'Electronique', 'Mixte'],
+                  datasets: [{
+                  label: 'quantité existante en kg',
+                  data: [12, 19, 3, 5, 2, 3,50],
+                  backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 0, 0, 0.2)'                
+                 ],
+                  borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 0, 0, 1)'                
+                  ],
+                  borderWidth: 1
+                 }]
+                },
+                options: {
+                  scales: {
+                     y: {
+                         beginAtZero: true
+                   }
+                }
+                }
+                });
+            </script>
+			</div>
+			</div>
+			
+			<div class="col-md-6 ">
+			<div class="card">
+			<div class="card-body">
+			<h5 class="text-center "><br>Stock des dons :</h5>
+			</div>     
+			<div class="card-body">
+			    <canvas id="myChart2"></canvas>
+			</div>
+			</div>
+			<div>
+			<script>
+                  const ctx = document.getElementById('myChart').getContext('2d');
+                  const myChart2 = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                  labels: ['Papier', 'Metal', 'Plastique', 'Verre', 'Organique', 'Electronique', 'Mixte'],
+                  datasets: [{
+                  label: 'quantité existante en kg',
+                  data: [12, 19, 3, 5, 2, 3,50],
+                  backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 0, 0, 0.2)'                
+                 ],
+                  borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 0, 0, 1)'                
+                  ],
+                  borderWidth: 1
+                 }]
+                },
+                options: {
+                  scales: {
+                     y: {
+                         beginAtZero: true
+                   }
+                }
+                }
+                });
+            </script>
+			</div>
+			</div>
+		    </div>
+		    </div>
+		    
+		 </section>   
+		    
+		  </div><!-- /.row-->
+		  
+		    		  
+	</div><!-- /.container -->	
 </section>
 <!-- stock section --> 
 <!-- feedback section -->
@@ -131,13 +245,20 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-6 col-xs-12 content">
 				<div class="editContent">
-					<h3>Appréciez-vous nos services!</h3>
+					<h4 class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Appréciez-vous nos services?</h4>
 				</div>
 				      <div class="col-md-8 col-md-offset-2 conForm">       
         <div id="message"></div>
         <form method="post" action="php/contact.php" name="cform" id="cform">
           <input name="name" id="name" type="text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Votre nom ..." >
           <input name="email" id="email" type="email" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Adresse email..." >
+          <ul id="stars" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <li class="star" id="star1"><i class="fa fa-star"></i><i class="fa fa-star-o"></i></li>
+          <li class="star" id="star2"><i class="fa fa-star"></i><i class="fa fa-star-o"></i></li>
+          <li class="star" id="star3"><i class="fa fa-star" ></i><i class="fa fa-star-o"></i></li>
+          <li class="star" id="star4"><i class="fa fa-star" ></i><i class="fa fa-star-o"></i></li>
+          <li class="star" id="star5"><i class="fa fa-star"></i><i class="fa fa-star-o"></i></li>
+          </ul>
           <input type="submit" id="submit" name="send" class="btn btn-outline btn-outline outline-dark" value="Envoyer">
           <div id="simple-msg"></div>
         </form>
@@ -245,7 +366,8 @@
 <script src="ressources/js/jquery.flexslider-min.js"></script> 
 <script src="ressources/js/jquery.fancybox.pack.js"></script>  
 <script src="ressources/js/modernizr.js"></script> 
-<script src="ressources/js/main.js"></script> 
+<script src="ressources/js/main.js"></script>
+<script src="ressources/js/home.js"></script>  
 <script type="text/javascript" src="ressources/js/jquery.contact.js"></script> 
 <script type="text/javascript" src="ressources/js/jquery.devrama.slider.min-0.9.4.js"></script>
 <script type="text/javascript">
