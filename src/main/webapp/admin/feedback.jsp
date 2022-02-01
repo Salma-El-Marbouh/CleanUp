@@ -122,24 +122,7 @@
                   ><i class="mdi mdi-menu font-24"></i
                 ></a>
               </li>
-              <!-- ============================================================== -->
-              <!-- Search -->
-              <!-- ============================================================== -->
-              <li class="nav-item search-box">
-                <a
-                  class="nav-link waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  ><i class="mdi mdi-magnify fs-4"></i
-                ></a>
-                <form class="app-search position-absolute">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search &amp; enter"
-                  />
-                  <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                </form>
-              </li>
+              
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -388,7 +371,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Ajout d'une quantité de déchets </h4>
+              <h4 class="page-title">Boite de réception</h4>
 
             </div>
           </div>
@@ -400,315 +383,62 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
-        
-         <div class="row">
-            <div class="col-12">
-            
-          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+          <!-- ============================================================== -->
+          <!-- Start Page Content -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-body printableArea">
+                <h3><b>Feedback reçus </b> </h3>
+                <hr />
+                <div class="row">
 
-     <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body bg-primary text-white mailbox-widget pb-0">
-                    <h2 class="text-white pb-3">Your Mailbox</h2>
-                    <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" role="tab" aria-selected="true">
-                                <span class="d-block d-md-none"><i class="ti-email"></i></span>
-                                <span class="d-none d-md-block"> INBOX</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="sent-tab" data-toggle="tab" aria-controls="sent" href="#sent" role="tab" aria-selected="false">
-                                <span class="d-block d-md-none"><i class="ti-export"></i></span>
-                                <span class="d-none d-md-block">SENT</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="spam-tab" data-toggle="tab" aria-controls="spam" href="#spam" role="tab" aria-selected="false">
-                                <span class="d-block d-md-none"><i class="ti-panel"></i></span>
-                                <span class="d-none d-md-block">SPAM</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="delete-tab" data-toggle="tab" aria-controls="delete" href="#delete" role="tab" aria-selected="false">
-                                <span class="d-block d-md-none"><i class="ti-trash"></i></span>
-                                <span class="d-none d-md-block">DELETED</span>
-                            </a>
-                        </li>
-                    </ul>
+                  <div class="col-md-12">
+                    <div class="table-responsive mt-5" style="clear: both">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="text-center">numéro</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Note</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-center">houda</td>
+                            <td class="text-center"> houdaelmarbouh@gmail.com</td>
+                            <td class="text-center">4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center"></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-center"> moyenne: <br> 4</td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
-                        <div>
-                            <div class="row p-4 no-gutters align-items-center">
-                                <div class="col-sm-12 col-md-6">
-                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>350 Unread emails</h3>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <ul class="list-inline dl mb-0 float-left float-md-right">
-                                        <li class="list-inline-item text-info mr-3">
-                                            <a href="#">
-                                                <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                                <span class="ml-2 font-normal text-dark">Compose</span>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item text-danger">
-                                            <a href="#">
-                                                <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                                <span class="ml-2 font-normal text-dark">Delete</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Mail list-->
-                            <div class="table-responsive">
-                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
-                                    <tbody>
-                                        <!-- row -->
-                                        <tr>
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst1" />
-                                                    <label class="custom-control-label" for="cst1">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star text-warning"></i></td>
-                                            <td>
-                                                <span class="mb-0 text-muted">Hritik Roshan</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span>
-                                                    <span class="text-dark">Lorem ipsum perspiciatis-</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted">May 13</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr>
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst2" />
-                                                    <label class="custom-control-label" for="cst2">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star"></i></td>
-                                            <!-- User -->
-                                            <td>
-                                                <span class="mb-0 text-muted">Genelia Roshan</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-info mr-2">Business</span>
-                                                    <span class="text-dark">Inquiry about license for Admin </span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted">May 13</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr>
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst3" />
-                                                    <label class="custom-control-label" for="cst3">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star text-warning"></i></td>
-                                            <!-- User -->
-                                            <td class="user-name max-texts">
-                                                <span class="mb-0 text-muted font-light">Ritesh Deshmukh</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-warning mr-2">Friend</span>
-                                                    <span class="font-light text-dark">Bitbucket (commit Pushed) by Ritesh</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted font-light">May 13</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr class="">
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst4" />
-                                                    <label class="custom-control-label" for="cst4">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star"></i></td>
-                                            <!-- User -->
-                                            <td>
-                                                <span class="mb-0 text-muted font-light">Akshay Kumar</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-info mr-2">Work</span><span class="font-light text-dark">Perspiciatis unde omnis- iste Lorem ipsum</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted font-light">May 9</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr class="">
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst5" />
-                                                    <label class="custom-control-label" for="cst5">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star"></i></td>
-                                            <!-- User -->
-                                            <td>
-                                                <span class="mb-0 text-muted font-light">John Abraham</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis- unde omnis</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted font-light">Mar 10</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr class="">
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst6" />
-                                                    <label class="custom-control-label" for="cst6">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star text-warning"></i></td>
-                                            <!-- User -->
-                                            <td>
-                                                <span class="mb-0 text-muted font-light">Akshay Kumar</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis - unde</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted font-light">Mar 09</td>
-                                        </tr>
-                                        <!-- row -->
-                                        <tr class="">
-                                            <!-- label -->
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cst7" />
-                                                    <label class="custom-control-label" for="cst7">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <!-- star -->
-                                            <td><i class="fa fa-star text-warning"></i></td>
-                                            <!-- User -->
-                                            <td>
-                                                <span class="mb-0 text-muted font-light">Hanna Gover</span>
-                                            </td>
-                                            <!-- Message -->
-                                            <td>
-                                                <a class="link" href="javascript: void(0)">
-                                                    <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span><span class="font-light text-dark"> Unde omnis Lorem ipsum perspiciatis</span>
-                                                </a>
-                                            </td>
-                                            <!-- Attachment -->
-                                            <td><i class="fa fa-paperclip text-muted"></i></td>
-                                            <!-- Time -->
-                                            <td class="text-muted font-light">Mar 09</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
-                        <div class="row p-3 text-dark">
-                            <div class="col-md-6">
-                                <h3 class="font-light">Lets check profile</h3>
-                                <h4 class="font-light">you can use it with the small code</h4>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="spam" aria-labelledby="spam-tab" role="tabpanel">
-                        <div class="row p-3 text-dark">
-                            <div class="col-md-6">
-                                <h3 class="font-light">Come on you have a lot message</h3>
-                                <h4 class="font-light">you can use it with the small code</h4>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="delete" aria-labelledby="delete-tab" role="tabpanel">
-                        <div class="row p-3 text-dark">
-                            <div class="col-md-6">
-                                <h3 class="font-light">Just do Settings</h3>
-                                <h4 class="font-light">you can use it with the small code</h4>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- End PAge Content -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Right sidebar -->
+          <!-- ============================================================== -->
+          <!-- .right-sidebar -->
+          <!-- ============================================================== -->
+          <!-- End Right sidebar -->
+          <!-- ============================================================== -->
         </div>
-    </div>
-</div>
-              
-              
-         </div>
-         
-         
-         
-            
-         
-         
-      </div>
-    </div>
         
       </div>
       <!-- ============================================================== -->

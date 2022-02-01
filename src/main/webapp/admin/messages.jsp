@@ -122,24 +122,7 @@
                   ><i class="mdi mdi-menu font-24"></i
                 ></a>
               </li>
-              <!-- ============================================================== -->
-              <!-- Search -->
-              <!-- ============================================================== -->
-              <li class="nav-item search-box">
-                <a
-                  class="nav-link waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  ><i class="mdi mdi-magnify fs-4"></i
-                ></a>
-                <form class="app-search position-absolute">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search &amp; enter"
-                  />
-                  <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                </form>
-              </li>
+              
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -429,22 +412,12 @@
                             <td class="text-center">1</td>
                             <td>houda</td>
                             <td class="text-center"> houdaelmarbouh@gmail.com</td>
-                            <td class="text-center">je suis la responsable de l'agence de recyclage, je veux récupérer une quantité.</td>
+                            <td class="text-center">je suis la responsable de l'agence de recyclage, je veux récupérer une quantité de verre.</td>
                             <td class="text-center">
-                            <button type="button" class=" badge bg-info " > 
-                            <select
-                                   class="select2 form-select shadow-none"
-                                   style="width: 100%; height: 36px"
-                                 >
-                                 <option>Catégorie </option>
-                                 <option >Déchets</option>
-                                 <option>Dons</option>
-
-                            </select>
-                            </button>
+                            Dons
                             </td>
                             <td class="text-center">
-                            <button type="button" class=" badge bg-info " > 
+                            
                             <select
                                    class="select2 form-select shadow-none"
                                    style="width: 100%; height: 36px"
@@ -454,7 +427,6 @@
                                  <option>Traité</option>
 
                             </select>
-                            </button>
                             </td>
                             <td class="text-center">
                             <button type="button" class=" badge bg-danger " >

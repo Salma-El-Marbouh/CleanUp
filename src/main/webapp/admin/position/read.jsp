@@ -122,24 +122,7 @@
                   ><i class="mdi mdi-menu font-24"></i
                 ></a>
               </li>
-              <!-- ============================================================== -->
-              <!-- Search -->
-              <!-- ============================================================== -->
-              <li class="nav-item search-box">
-                <a
-                  class="nav-link waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  ><i class="mdi mdi-magnify fs-4"></i
-                ></a>
-                <form class="app-search position-absolute">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search &amp; enter"
-                  />
-                  <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                </form>
-              </li>
+              
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -434,7 +417,7 @@
                             <td class="text-center"><%=position.getVille() %></td>
                             <td class="text-center"><%=position.getQuartier()%> </td>
                             <td class="text-center"><%=position.getLocalisation() %></td>
-                            <td class="text-center"><%=cleaner.getNom() %></td>
+                            <td class="text-center"><%=cleanerId %></td>
                             <td class="text-center">
                             <button type="button" class=" badge bg-danger " >
                             <i class="fas fa-trash-alt"></i> 
@@ -450,6 +433,8 @@
                         </tbody>
                       </table>
                     </div>
+                <button class=" col-md-1 btn btn-lg btn-outline-success float-right"> Ajout</button>
+
                   </div>
 
                 </div>
