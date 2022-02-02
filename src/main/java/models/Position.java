@@ -5,7 +5,6 @@ public class Position {
 	private String ville;
 	private String quartier;
 	private String localisation;
-	private int eboueur_charge;
 	
 	
 	
@@ -13,15 +12,25 @@ public class Position {
 		super();
 	}
 	
-	public Position(String ville, String quartier, String localisation, int eboueur_charge) {
+	public Position(String ville, String quartier, String localisation) {
 		this.setVille(ville);
 		this.setQuartier(quartier);
 		this.setLocalisation(localisation);
-		this.setEboueurCharge(eboueur_charge);
+	}
+	
+	public Position(int position_id, String ville, String quartier, String localisation) {
+		this.setId(position_id);
+		this.setVille(ville);
+		this.setQuartier(quartier);
+		this.setLocalisation(localisation);
 	}
 	
 	public int getId() {
 		return position_id;
+	}
+	
+	public int setId(int id) {
+		return this.position_id=id;		
 	}
 
 	public String getVille() {
@@ -48,12 +57,5 @@ public class Position {
 		this.localisation = localisation;
 	}
 
-	public int getEboueurCharge() {
-		return eboueur_charge;
-	}
-
-	public void setEboueurCharge(int eboueurCharge) {
-		this.eboueur_charge = eboueurCharge;
-	}	
 }
 

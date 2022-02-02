@@ -1,4 +1,6 @@
 const stars = document.getElementsByClassName("star")
+const note = document.getElementById("note")
+
 
 for(let star of stars){
 	sessionStorage.setItem(star.id, "unchecked")
@@ -32,7 +34,8 @@ for(let i=0; i<stars.length; i++){
 			stars[j].childNodes[0].style.display = "block"
 		    stars[j].childNodes[1].style.display = "none"
 		    sessionStorage.setItem(stars[j].id,"checked")
-		}	
+		}
+		note.value=i+1	
 	})
 		
 }

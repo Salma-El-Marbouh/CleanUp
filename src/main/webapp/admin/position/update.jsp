@@ -382,14 +382,14 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-        <div class="container-fluid">
+ <div class="container-fluid">
         
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
             
               <div class="card">
            
-                <form class="form-horizontal">
+                <form action="/CleanUp/addPosition"  method="post" class="form-horizontal" >
                   <div class="card-body">
                     <h4 class="card-title">Information du point de récupération</h4>
                     <br>
@@ -401,6 +401,7 @@
                           type="text"
                           class="form-control"
                           id="fname"
+                          name="ville"
                           placeholder="Insérer la ville ici"
                         />
                       </div>
@@ -412,6 +413,7 @@
                           type="text"
                           class="form-control"
                           id="lname"
+                          name="quartier"
                           placeholder="Insérer le quartier ici "
                         />
                       </div>
@@ -420,73 +422,30 @@
                       <label class="col-md-3 mt-3" >Localisation</label>
                       <div class="col-sm-9">
                         <input
-                          type="password"
+                          type="text"
                           class="form-control"
                           id="lname"
+                          name="localisation"
                           placeholder="Insérer la localisation exacte ici"
                         />
                       </div>
                     </div> 
-                         
-                    
-                    <div class="form-group row">
-                    <label class="col-md-3 mt-3">Eboueur chargé</label>
-                    <div class="col-md-9">
-                      <select
-                        class="select2 form-select shadow-none"
-                        style="width: 100%; height: 36px"
-                      >
-                      <option>Selectionner </option>
-                      <option >Mohammed</option>
-                      <option>Ahmed</option>
-
-                      </select>
-                    </div>
-                  </div>
-                                     
+                                    
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">
-                        Modifier
+                        Enregistrer
                       </button>
                     </div>
                   </div>
                   </div>
                 </form>
               </div>
-         </div>
-         
-         
-         
-         
-         <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-0"> Rechercher l'adresse</h5>
-                  
-                  
-                  <h1> Google maps API</h1>
-                  
-                  
-                  
-                  
-                <div class="border-top">
-                    <div class="card-body">
-                      <button type="submit" class="btn btn-primary">
-                        Modifier
-                      </button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-         
-      </div>   
-         
+         </div>         
          
       </div>
     </div>
-       
+        
       </div>
       <!-- ============================================================== -->
       <!-- End Page wrapper  -->

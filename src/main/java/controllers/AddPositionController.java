@@ -27,15 +27,12 @@ public class AddPositionController extends HttpServlet {
 		    	System.out.println(request.getParameter("ville"));
 		    	System.out.println(request.getParameter("quartier"));
 		    	System.out.println(request.getParameter("localisation"));
-		    	System.out.println(request.getParameter("eboueur_charge"));
 		    	
-		    	Position position = new Position(request.getParameter("ville"),request.getParameter("quartier"), request.getParameter("localisation"), Integer.parseInt(request.getParameter("eboueur_charge")) );
-		    	
-
+		    	Position position = new Position(request.getParameter("ville"),request.getParameter("quartier"), request.getParameter("localisation") );
 		    	
 		    	boolean _position = positionService.createPosition(position);
 		    	if(_position == true) {
-		    		response.sendRedirect("http://localhost:8080/CleanUp/admin/cleaner/create.jsp");
+		    		response.sendRedirect("http://localhost:8080/CleanUp/admin/position/create.jsp");
 		    	} else {
 		    		response.sendRedirect("http://localhost:8080/CleanUp/error.jsp");
 		    	}

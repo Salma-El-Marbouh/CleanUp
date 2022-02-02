@@ -33,8 +33,8 @@ public class PositionService {
 		return positionConnector.updatePosition(_position);
 	}
 	
-	public boolean deletePosition(Position _position) {
-		return positionConnector.deletePosition(_position);
+	public boolean deletePosition(int id) {
+		return positionConnector.deletePosition(id);
 	}
 	
 	public List<Cleaner> getAllCleaners(){
@@ -43,6 +43,10 @@ public class PositionService {
 	
 	public Cleaner getOneCleaner(int id) {
 		return cleanerConnector.getCleaner(id);
+	}
+	
+	public String getTheCleaner(int id) {
+		return positionConnector.getTheCleaner(id);
 	}
 	
 }

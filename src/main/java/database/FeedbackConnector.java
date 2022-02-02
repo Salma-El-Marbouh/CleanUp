@@ -22,7 +22,7 @@ public class FeedbackConnector {
 	public boolean createFeedback (Feedback feedback) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `feedback` (`nom`, `email`,`note`) VALUES (?,?,?,?)");
+			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `feedback` (`nom`, `email`,`note`) VALUES (?,?,?);");
 			ps.setString(1,feedback.getNom());
 			ps.setString(2,feedback.getEmail());
 			ps.setInt(3,feedback.getNote());

@@ -430,31 +430,7 @@
                         />
                       </div>
                     </div> 
-                         
-                    
-                    <div class="form-group row">
-                    <label class="col-md-3 mt-3">Eboueur chargé</label>
-                    <div class="col-md-9">
-                      <select
-                        class="select2 form-select shadow-none"
-                        name="eboueur_charge"
-                        style="width: 100%; height: 36px"
-                      >
-                      <option>Selectionner </option>
-                      
-                      <%
-                      PositionService positionservice = new PositionService();
-                      List<Cleaner> listCleaners = positionservice.getAllCleaners();
-                      int i=0;%>
-                      <%while( i < listCleaners.size() ){%>
-                      <% Cleaner cleaner = listCleaners.get(i);%>                      
-                      <option value="<%=cleaner.getCleanerId()%>"><%=cleaner.getNom()%></option>
-                      <%i++;%>
-                     <%}%>
-                      </select>
-                    </div>
-                  </div>
-                                     
+                                    
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">

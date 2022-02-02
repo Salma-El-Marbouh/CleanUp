@@ -12,13 +12,13 @@ public class Cleaner {
 	private String email;
 	private String mot_de_passe;
 	private Date date_emploi;
-	private String adresses_de_ramassage;
+	private int adresses_de_ramassage;
 	
 	public Cleaner() {
 		super();
 	}
 	
-	public Cleaner(String nom, String prenom, Date date_de_naissance, String sexe, String telephone, String email, String mot_de_passe, Date date_emploi, String adresses_de_ramassage) {
+	public Cleaner(String nom, String prenom, Date date_de_naissance, String sexe, String telephone, String email, String mot_de_passe, Date date_emploi, int adresses_de_ramassage) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.date_de_naissance = date_de_naissance;
@@ -98,11 +98,11 @@ public class Cleaner {
 		this.date_emploi = date_emploi;
 	}
 
-	public String getAdressesDeRamassage() {
+	public int getAdressesDeRamassage() {
 		return adresses_de_ramassage;
 	}
 
-	public void setAdressesDeRamassage(String adresses_de_ramassage) {
+	public void setAdressesDeRamassage(int adresses_de_ramassage) {
 		this.adresses_de_ramassage = adresses_de_ramassage;
 	}
 	

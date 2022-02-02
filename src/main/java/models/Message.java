@@ -5,15 +5,27 @@ public class Message {
 	private String nom;
 	private String email;
 	private String message;
+	private String categorie;
+	private String etat;
 	
 	public Message() {
 		super();
 	}
 	
-	public Message(String nom, String email, String message) {
+	public Message(String nom, String email, String message, String categorie) {
 		this.nom = nom;
 		this.email = email;
-		this.message = message;		
+		this.message = message;	
+		this.categorie = categorie;
+	}
+	
+	public Message(int message_id, String nom, String email, String message, String categorie, String etat) {
+		this.setMessageId(message_id);
+		this.nom = nom;
+		this.email = email;
+		this.message = message;	
+		this.categorie = categorie;
+		this.etat = etat;
 	}
 
 	public int getMessageId() {
@@ -46,6 +58,22 @@ public class Message {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 	
 

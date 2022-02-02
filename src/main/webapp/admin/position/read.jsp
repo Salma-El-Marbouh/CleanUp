@@ -410,19 +410,32 @@
                             List<Position> listPositions = positionService.readAllPositions(); %>
                             <%int i=1; %>
                             <%for(Position position:listPositions){ %>
-                            <%int cleanerId = position.getEboueurCharge(); %>
-                            <%Cleaner cleaner = positionService.getOneCleaner(cleanerId); %>
+                            <%String cleaner = positionService.getTheCleaner(position.getId());
+                            if( cleaner== null){
+                            	cleaner="non affectée";
+                            }
+                            %>
                            <tr> 
                             <td class="text-center"><%=i %></td>
                             <td class="text-center"><%=position.getVille() %></td>
                             <td class="text-center"><%=position.getQuartier()%> </td>
                             <td class="text-center"><%=position.getLocalisation() %></td>
-                            <td class="text-center"><%=cleanerId %></td>
+                            <td class="text-center"><%=cleaner %></td>
                             <td class="text-center">
-                            <button type="button" class=" badge bg-danger " >
-                            <i class="fas fa-trash-alt"></i> 
+                            <script type="text/javascript"> let delete_position = () => {
+                            	fetch('/CleanUp/deletePosition?position_id=<%=position.getId()%>',{
+                            	method:'POST'
+                            	})
+                                .then(()=>location.reload())
+                                
+                                let update_position = () => {
+                                	fetch('update.jsp?ville=<%=position.getVille()%>&quartier=<%=position.getQuartier()%>&localisation=<%=position.getLocalisation() %>')
+                                }                                
+                            } </script>
+                            <button onclick="delete_position()" type="button" class=" badge bg-danger " >
+                            <i class="fas fa-trash-alt"></i>
                             </button>
-                            <button type="button" class=" badge bg-info " > 
+                            <button onclick="update_position()" type="button" class=" badge bg-info " > 
                             <i class="far fa-edit"></i>
                             </button>
                             </td>
@@ -433,7 +446,7 @@
                         </tbody>
                       </table>
                     </div>
-                <button class=" col-md-1 btn btn-lg btn-outline-success float-right"> Ajout</button>
+                <button onclick="location.href = 'create.jsp';" class=" col-md-1 btn btn-lg btn-outline-success float-right"> Ajout</button>
 
                   </div>
 

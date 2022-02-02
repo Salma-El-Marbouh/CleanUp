@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.CleanerService,models.Position"%>
 
 <html dir="ltr" lang="frensh">
   <head>
@@ -389,7 +389,7 @@
             
               <div class="card">
            
-                <form class="form-horizontal">
+                <form action="/CleanUp/addCleaner"  method="post" class="form-horizontal" >
                   <div class="card-body">
                     <h4 class="card-title">Informations de l'éboueur </h4>
                     <br>
@@ -401,6 +401,7 @@
                           type="text"
                           class="form-control"
                           id="fname"
+                          name="nom"
                           placeholder="Insérer le nom ici"
                         />
                       </div>
@@ -412,6 +413,7 @@
                           type="text"
                           class="form-control"
                           id="lname"
+                          name="prenom"
                           placeholder="Insérer le prénom ici "
                         />
                       </div>
@@ -423,6 +425,7 @@
                           type="Date"
                           class="form-control"
                           id="lname"
+                          name="date_de_naissance"
                          
                           />
                       </div>
@@ -452,6 +455,7 @@
                           type="tel"
                           class="form-control"
                           id="lname"
+                          name="telephone"
                           placeholder="exemple: 0600000000 "
                           />
                       </div>
@@ -466,6 +470,7 @@
                           type="email"
                           class="form-control"
                           id="lname"
+                          name="email"
                           placeholder="exemple: xyz@gmail.com "
                           />
                       </div>
@@ -478,6 +483,7 @@
                           type="password"
                           class="form-control"
                           id="lname"
+                          name="mot_de_passe"
                           placeholder="Insérer le mot de passe ici "
                           />
                       </div>
@@ -490,27 +496,35 @@
                           type="date"
                           class="form-control"
                           id="lname"
+                          name="date_emploi"
                          
                           />
                       </div>
                     </div>
                     
                     <div class="form-group row">
-                      <label class="col-md-3 mt-3" >Adresses de ramassage</label>
-                      <div class="col-sm-9">
+                    <label class="col-md-3 mt-3">Adresse de ramassage</label>
+                    <div class="col-md-9">
                       <select
                         class="select2 form-select shadow-none"
+                        name="eboueur_charge"
                         style="width: 100%; height: 36px"
                       >
                       <option>Selectionner </option>
-                      <option >Anassi</option>
-                      <option>lmansour</option>
-
+                      
+                      <%
+                      CleanerService cleanerService = new CleanerService();
+                      List<Position> listPositions= cleanerService.getAllPositions();
+                      int i=0;%>
+                      <%while( i < listPositions.size() ){%>
+                      <% Position position = listPositions.get(i);%>                      
+                      <option value="<%=position.getId()%>"><%=position.getVille()%>_<%=position.getQuartier()%>_<%=position.getLocalisation()%></option>
+                      <%i++;%>
+                     <%}%>
                       </select>
-                    
-                      </div>
                     </div>
-                                     
+                  </div>
+                                                    
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">

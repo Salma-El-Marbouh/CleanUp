@@ -10,11 +10,6 @@ import models.Message;
 
 public class MessageConnector {
 
-	private Connection cnx;
-	
-	public MessageConnector() {
-		this.cnx = DatabaseConfig.loadDatabase();
-	}
 	
 	
 	//create message 
@@ -22,10 +17,12 @@ public class MessageConnector {
 	public boolean createMessage (Message message) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `message` (`nom`, `email`,`message`) VALUES (?,?,?,?)");
+			Connection cnx = DatabaseConfig.loadDatabase();
+			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `messages` (`nom`, `email`,`message`,`categorie`) VALUES (?,?,?,?);");
 			ps.setString(1,message.getNom());
 			ps.setString(2,message.getEmail());
 			ps.setString(3,message.getMessage());
+			ps.setString(4,message.getCategorie());
 			ps.executeUpdate();	
 			System.out.println("creation succeeded !");
 			return true;
@@ -46,16 +43,20 @@ public class MessageConnector {
 		Message message = null;
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("SELECT * FROM `message` WHERE message_id=? ;");
+			Connection cnx = DatabaseConfig.loadDatabase();
+			PreparedStatement ps = cnx.prepareStatement("SELECT * FROM `messages` WHERE message_id=? ;");
 			ps.setInt(1, id );
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int message_id = rs.getInt("message_id");
 				String nom = rs.getString("nom");
 				String email = rs.getString("email");
 				String message1 = rs.getString("message");
+				String categorie = rs.getString("categorie");
+				String etat = rs.getString("etat");
 				System.out.println("we got it !");
-				message = new Message(nom, email, message1);
+				message = new Message(message_id, nom, email, message1, categorie, etat);
 				System.out.println("we got it 2 !");
 								
 			}
@@ -78,13 +79,17 @@ public class MessageConnector {
 		
 		ArrayList<Message> list_Messages = new ArrayList<Message>();
 		try {
-			PreparedStatement ps = cnx.prepareStatement("select * from `message`");
+			Connection cnx = DatabaseConfig.loadDatabase();
+			PreparedStatement ps = cnx.prepareStatement("select * from `messages`");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Message e = new Message();
+				e.setMessageId(rs.getInt("message_id"));
 	        	e.setNom(rs.getString("nom"));
 	            e.setEmail(rs.getString("email"));
 	            e.setMessage( rs.getString("message"));
+	            e.setCategorie(rs.getString("categorie"));
+	            e.setEtat(rs.getString("etat"));
 	            list_Messages.add(e);
 			}
 			cnx.close();
@@ -102,11 +107,14 @@ public class MessageConnector {
 	public boolean updateMessage(Message message ) {
 			
 		try {
-			PreparedStatement ps = cnx.prepareStatement("UPDATE `message` SET nom=?, email=?, message=? WHERE message_id=?;");
+			Connection cnx = DatabaseConfig.loadDatabase();
+			PreparedStatement ps = cnx.prepareStatement("UPDATE `messages` SET nom=?, email=?, message=?, categorie=?, etat=? WHERE message_id=?;");
 			ps.setString(1, message.getNom());
 			ps.setString(2, message.getEmail());
 			ps.setString(3, message.getMessage());
-			ps.setInt(4, message.getMessageId());
+			ps.setString(4, message.getCategorie());
+			ps.setString(5, message.getEtat());
+			ps.setInt(6, message.getMessageId());
 			int i = ps.executeUpdate();
               System.out.println("updated successfully!");
 			if(i == 1) {
@@ -126,11 +134,12 @@ public class MessageConnector {
 	
 	//delete message
 	
-	public boolean deleteMessage(Message message) {
+	public boolean deleteMessage(int id) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("DELETE `message` WHERE message_id=?;");
-			ps.setLong(1, message.getMessageId());
+			Connection cnx = DatabaseConfig.loadDatabase();
+			PreparedStatement ps = cnx.prepareStatement("DELETE FROM `messages` WHERE message_id=?;");
+			ps.setLong(1, id);
 			int i = ps.executeUpdate();
               System.out.println("deleted successfully!");
 			if(i == 1) {

@@ -32,7 +32,7 @@ public class CleanerConnector {
 			ps.setString(6,cleaner.getEmail());
 			ps.setString(7,cleaner.getMotDePasse());
 			ps.setDate(8,cleaner.getDateEmploi());
-			ps.setString(9,cleaner.getAdressesDeRamassage());
+			ps.setInt(9,cleaner.getAdressesDeRamassage());
 			ps.executeUpdate();	
 			System.out.println("creation succeeded !");
 			return true;
@@ -66,7 +66,7 @@ public class CleanerConnector {
 				String email = rs.getString("email");
 				String mot_de_passe = rs.getString("mot_de_passe");
 				Date date_emploi = rs.getDate("date_emploi");
-				String adresses_de_ramassage = rs.getString("adresses_de_ramassage");
+				int adresses_de_ramassage = rs.getInt("adresses_de_ramassage");
 				System.out.println("we got it !");
 				cleaner = new Cleaner(nom, prenom, date_de_naissance, sexe, telephone, email, mot_de_passe, date_emploi, adresses_de_ramassage);
 				System.out.println("we got it 2 !");
@@ -105,7 +105,7 @@ public class CleanerConnector {
 				e.setEmail(rs.getString("email"));
 				e.setMotDePasse(rs.getString("mot_de_passe"));
 				e.setDateEmploi(rs.getDate("date_emploi"));
-				e.setAdressesDeRamassage(rs.getString("adresses_de_ramassage"));
+				e.setAdressesDeRamassage(rs.getInt("adresses_de_ramassage"));
 	            list_Cleaners.add(e);
 			}
 			cnx.close();
@@ -132,7 +132,7 @@ public class CleanerConnector {
 			ps.setString(6,cleaner.getEmail());
 			ps.setString(7,cleaner.getMotDePasse());
 			ps.setDate(8,cleaner.getDateEmploi());
-			ps.setString(9,cleaner.getAdressesDeRamassage());
+			ps.setInt(9,cleaner.getAdressesDeRamassage());
 			ps.setInt(10, cleaner.getCleanerId());
 			int i = ps.executeUpdate();
               System.out.println("updated successfully!");
