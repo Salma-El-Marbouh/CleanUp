@@ -100,11 +100,11 @@ public class PositionConnector {
 			
 		try {
 			Connection cnx = DatabaseConfig.loadDatabase();
-			PreparedStatement ps = cnx.prepareStatement("UPDATE `position` SET ville=?, quartier=?, localisation=?, eboueur_charge=? WHERE position_id=?;");
+			PreparedStatement ps = cnx.prepareStatement("UPDATE `position` SET ville=?, quartier=?, localisation=? WHERE position_id=?;");
 			ps.setString(1, position.getVille());
 			ps.setString(2, position.getQuartier());
 			ps.setString(3, position.getLocalisation());
-			ps.setLong(5, position.getId());
+			ps.setLong(4, position.getId());
 			int i = ps.executeUpdate();
               System.out.println("updated successfully!");
 			if(i == 1) {

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.CleanerService,models.Position"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Cleaner,models.Position,services.CleanerService"%>
 
 <html dir="ltr" lang="frensh">
   <head>
@@ -400,7 +400,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="fname"
+                          id="nom"
                           name="nom"
                           placeholder="Insérer le nom ici"
                         />
@@ -412,7 +412,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="lname"
+                          id="prenom"
                           name="prenom"
                           placeholder="Insérer le prénom ici "
                         />
@@ -424,7 +424,7 @@
                         <input
                           type="Date"
                           class="form-control"
-                          id="lname"
+                          id="date_de_naissance"
                           name="date_de_naissance"
                          
                           />
@@ -436,12 +436,12 @@
                     <label class="col-md-3 mt-3">Sexe</label>
                     <div class="col-md-9">
                       <div>
-                      <input type="radio" id="femme" value="femme" name="sexe" checked />
+                      <input type="radio" id="sexe" value="femme" name="sexe" checked />
                       <label for="femme">femme</label>
                       </div>
                       
                       <div>                      
-                      <input type="radio" id="homme" value="homme" name="sexe" />
+                      <input type="radio" id="sexe" value="homme" name="sexe" />
                       <label for="homme">homme</label>
                       </div>
                       
@@ -454,7 +454,7 @@
                         <input
                           type="tel"
                           class="form-control"
-                          id="lname"
+                          id="telephone"
                           name="telephone"
                           placeholder="exemple: 0600000000 "
                           />
@@ -469,7 +469,7 @@
                         <input
                           type="email"
                           class="form-control"
-                          id="lname"
+                          id="email"
                           name="email"
                           placeholder="exemple: xyz@gmail.com "
                           />
@@ -482,7 +482,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id="lname"
+                          id="mot_de_passe"
                           name="mot_de_passe"
                           placeholder="Insérer le mot de passe ici "
                           />
@@ -495,7 +495,7 @@
                         <input
                           type="date"
                           class="form-control"
-                          id="lname"
+                          id="date_emploi"
                           name="date_emploi"
                          
                           />
@@ -507,7 +507,8 @@
                     <div class="col-md-9">
                       <select
                         class="select2 form-select shadow-none"
-                        name="eboueur_charge"
+                        name="adresses_de_ramassage"
+                        id="adresses_de_ramassage"
                         style="width: 100%; height: 36px"
                       >
                       <option>Selectionner </option>

@@ -58,6 +58,7 @@ public class CleanerConnector {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int cleaner_id = rs.getInt("cleaner_id");
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
 				Date date_de_naissance = rs.getDate("date_de_naissance");
@@ -68,7 +69,7 @@ public class CleanerConnector {
 				Date date_emploi = rs.getDate("date_emploi");
 				int adresses_de_ramassage = rs.getInt("adresses_de_ramassage");
 				System.out.println("we got it !");
-				cleaner = new Cleaner(nom, prenom, date_de_naissance, sexe, telephone, email, mot_de_passe, date_emploi, adresses_de_ramassage);
+				cleaner = new Cleaner(cleaner_id, nom, prenom, date_de_naissance, sexe, telephone, email, mot_de_passe, date_emploi, adresses_de_ramassage);
 				System.out.println("we got it 2 !");
 								
 			}
@@ -93,10 +94,11 @@ public class CleanerConnector {
 		
 		ArrayList<Cleaner> list_Cleaners = new ArrayList<Cleaner>();
 		try {
-			PreparedStatement ps = cnx.prepareStatement("select * from `cleaner`");
+			PreparedStatement ps = cnx.prepareStatement("select * from `cleaner`;");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Cleaner e = new Cleaner();
+				e.setCleanerId(rs.getInt("cleaner_id"));
 				e.setNom(rs.getString("nom"));
 				e.setPrenom(rs.getString("prenom"));
 				e.setDateDeNaissance(rs.getDate("date_de_naissance"));
@@ -153,11 +155,11 @@ public class CleanerConnector {
 	
 	//delete cleaner
 	
-	public boolean deleteCleaner(Cleaner cleaner) {
+	public boolean deleteCleaner(int id) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("DELETE `cleaner` WHERE cleaner_id=?;");
-			ps.setLong(1, cleaner.getCleanerId());
+			PreparedStatement ps = cnx.prepareStatement("DELETE FROM `cleaner` WHERE cleaner_id=?;");
+			ps.setLong(1, id);
 			int i = ps.executeUpdate();
               System.out.println("deleted successfully!");
 			if(i == 1) {

@@ -34,8 +34,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
   </head>
-
   <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -393,7 +393,32 @@
 
                   <div class="col-md-12">
                     <div class="table-responsive mt-5" style="clear: both">
-                      <table class="table table-hover">
+                      <script type="text/javascript">
+                              function update_position(Id, Ville, Quartier, Localisation){
+                              	sessionStorage.setItem("position_id",Id)
+                              	console.log(Id)
+                              	sessionStorage.setItem("position_ville",Ville)
+                              	console.log(Ville)
+                              	sessionStorage.setItem("position_quartier",Quartier)
+                              	console.log(Quartier)
+                              	sessionStorage.setItem("position_localisation",Localisation)
+                              	console.log(Localisation)
+                              	
+                              	location.href="update.jsp"
+                              }
+                              
+                              function delete_position(position_id){
+                              	fetch("/CleanUp/deletePosition?position_id="+position_id
+                              			,{
+                              	method:'POST'
+                              	})
+                                  .then(()=>{
+                                  	location.reload()
+                                  	})
+                                  }
+                          </script>
+                          <table class="table table-hover">
+                      
                         <thead>
                           <tr>
                             <th class="text-center">numéro</th>
@@ -404,8 +429,9 @@
                             <th class="text-center">Options</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          
+                        
+                        
+                          <tbody>
                           <% PositionService positionService = new PositionService();
                             List<Position> listPositions = positionService.readAllPositions(); %>
                             <%int i=1; %>
@@ -422,20 +448,14 @@
                             <td class="text-center"><%=position.getLocalisation() %></td>
                             <td class="text-center"><%=cleaner %></td>
                             <td class="text-center">
-                            <script type="text/javascript"> let delete_position = () => {
-                            	fetch('/CleanUp/deletePosition?position_id=<%=position.getId()%>',{
-                            	method:'POST'
-                            	})
-                                .then(()=>location.reload())
-                                
-                                let update_position = () => {
-                                	fetch('update.jsp?ville=<%=position.getVille()%>&quartier=<%=position.getQuartier()%>&localisation=<%=position.getLocalisation() %>')
-                                }                                
-                            } </script>
-                            <button onclick="delete_position()" type="button" class=" badge bg-danger " >
+                            
+                              
+                            <button onclick="delete_position('<%=position.getId() %>')" type="button" class=" badge bg-danger " >
                             <i class="fas fa-trash-alt"></i>
                             </button>
-                            <button onclick="update_position()" type="button" class=" badge bg-info " > 
+                            
+                          
+                            <button onclick="update_position('<%=position.getId() %>','<%=position.getVille()%>','<%=position.getQuartier() %>','<%=position.getLocalisation() %>')" type="button" class=" badge bg-info " > 
                             <i class="far fa-edit"></i>
                             </button>
                             </td>

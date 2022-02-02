@@ -33,8 +33,8 @@ public class CleanerService {
 		return cleanerConnector.updateCleaner(_cleaner);
 	}
 	
-	public boolean deleteCleaner(Cleaner _cleaner) {
-		return cleanerConnector.deleteCleaner(_cleaner);
+	public boolean deleteCleaner(int id) {
+		return cleanerConnector.deleteCleaner(id);
 	}
 	
 	public List<Position> getAllPositions(){

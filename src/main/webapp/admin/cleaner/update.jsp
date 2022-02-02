@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Cleaner,models.Position,services.CleanerService"%>
 
 <html dir="ltr" lang="frensh">
   <head>
@@ -389,7 +389,7 @@
             
               <div class="card">
            
-                <form class="form-horizontal">
+                <form action="/Cleaner/updateCleaner" method="post" class="form-horizontal">
                   <div class="card-body">
                     <h4 class="card-title">Informations de l'éboueur </h4>
                     <br>
@@ -400,7 +400,8 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="fname"
+                          id="nom"
+                          name="nom"
                           placeholder="Insérer le nom ici"
                         />
                       </div>
@@ -411,7 +412,8 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="lname"
+                          id="prenom"
+                          name= "prenom"
                           placeholder="Insérer le prénom ici "
                         />
                       </div>
@@ -422,7 +424,8 @@
                         <input
                           type="Date"
                           class="form-control"
-                          id="lname"
+                          id="date_de_naissance"
+                          name= "date_de_naissance"
                          
                           />
                       </div>
@@ -433,12 +436,12 @@
                     <label class="col-md-3 mt-3">Sexe</label>
                     <div class="col-md-9">
                       <div>
-                      <input type="radio" id="femme" value="femme" name="sexe" checked />
+                      <input type="radio" id="sexe" value="femme" name="sexe" checked />
                       <label for="femme">femme</label>
                       </div>
                       
                       <div>                      
-                      <input type="radio" id="homme" value="homme" name="sexe" />
+                      <input type="radio" id="sexe" value="homme" name="sexe" />
                       <label for="homme">homme</label>
                       </div>
                       
@@ -451,8 +454,9 @@
                         <input
                           type="tel"
                           class="form-control"
-                          id="lname"
+                          id="telephone"
                           placeholder="exemple: 0600000000 "
+                          name= "telephone"
                           />
                       </div>
                     </div>
@@ -465,8 +469,9 @@
                         <input
                           type="email"
                           class="form-control"
-                          id="lname"
+                          id="email"
                           placeholder="exemple: xyz@gmail.com "
+                          name= "email"
                           />
                       </div>
                     </div>
@@ -477,8 +482,9 @@
                         <input
                           type="password"
                           class="form-control"
-                          id="lname"
+                          id="mot_de_passe"
                           placeholder="Insérer le mot de passe ici "
+                          name="mot_de_passe"
                           />
                       </div>
                     </div>
@@ -489,7 +495,8 @@
                         <input
                           type="date"
                           class="form-control"
-                          id="lname"
+                          id="date_emploi"
+                          name="date_emploi"
                          
                           />
                       </div>
@@ -501,8 +508,19 @@
                       <select
                         class="select2 form-select shadow-none"
                         style="width: 100%; height: 36px"
+                        id="adresses_de_ramassage"
+                        name="adresses_de_ramassage"
                         
                       >
+                      <%
+                      PositionService positionService = new PositionService();
+                      List<Position> listPositions= positionService.readAllPositions();
+                      int i=0;%>
+                      <%while( i < listPositions.size() ){%>
+                      <% Position position = listPositions.get(i);%>                      
+                      <option value="<%=position.getId()%>"><%=position.getVille()%>_<%=position.getQuartier()%>_<%=position.getLocalisation()%></option>
+                      <%i++;%>
+                     <%}%>
                       <option>Selectionner </option>
                       <option >Anassi</option>
                       <option>lmansour</option>
@@ -521,6 +539,34 @@
                   </div>
                   </div>
                 </form>
+                <script type="text/javascript"> 
+                
+                const cleaner_id = document.getElementById("cleaner_id")
+                const nom = document.getElementById("nom")
+                const prenom = document.getElementById("prenom")
+                const date_de_naissance = document.getElementById("date_de_naissance")
+                const sexe = document.getElementById("sexe")
+                const telephone = document.getElementById("telephone")
+                const email = document.getElementById("email")
+                const mot_de_passe = document.getElementById("mot_de_passe")
+                const date_emploi = document.getElementById("date_emploi")
+                const adresses_de_ramassage = document.getElementById("adresses_de_ramassage")
+               
+
+                
+                cleaner_id.value = sessionStorage.getItem("cleaner_id")
+                nom.value = sessionStorage.getItem("nom")
+                prenom.value = sessionStorage.getItem("prenom")
+                date_de_naissance.value = sessionStorage.getItem("date_de_naissance")
+                sexe.value = sessionStorage.getItem("sexe")
+                telephone.value = sessionStorage.getItem("telephone")
+                email.value = sessionStorage.getItem("email")
+                mot_de_passe.value = sessionStorage.getItem("mot_de_passe")
+                date_emploi.value = sessionStorage.getItem("date_emploi")
+                adresses_de_ramassage.value = sessionStorage.getItem("adresses_de_ramassage")
+                
+                
+                </script>
               </div>
          </div>
          

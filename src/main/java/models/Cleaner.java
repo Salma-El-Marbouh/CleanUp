@@ -30,8 +30,28 @@ public class Cleaner {
 		this.adresses_de_ramassage = adresses_de_ramassage;
 		
 	}
+	
+	public Cleaner(int cleaner_id, String nom, String prenom, Date date_de_naissance, String sexe, String telephone, String email, String mot_de_passe, Date date_emploi, int adresses_de_ramassage) {
+
+		this.cleaner_id = cleaner_id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.date_de_naissance = date_de_naissance;
+		this.sexe = sexe;
+		this.telephone = telephone;
+		this.email = email;
+		this.mot_de_passe = mot_de_passe;
+		this.date_emploi = date_emploi;
+		this.adresses_de_ramassage = adresses_de_ramassage;
+		
+	}
+	
 	public int getCleanerId() {
 		return cleaner_id;
+	}
+	
+	public void setCleanerId( int cleaner_id) {
+		this.cleaner_id = cleaner_id;
 	}
 	
 	public String getNom() {

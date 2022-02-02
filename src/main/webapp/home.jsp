@@ -246,9 +246,9 @@
 				      <div class="col-md-8 col-md-offset-2 conForm">       
         <div id="message"></div>
        
-        <form  onsubmit="addFeedback(this)" name="cform" id="cform">
-          <input name="nom" id="nom1" type="text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Votre nom ..." >
-          <input name="email" id="email1" type="email" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Adresse email..." >
+        <form  action="/CleanUp/addFeedback" method="post" name="cform" id="cform">
+          <input name="nom" id="nom" type="text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Votre nom ..." >
+          <input name="email" id="email" type="email" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Adresse email..." >
           <input name="note" id="note" type="hidden" >
           <ul id="stars" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <li class="star" id="star1"><i class="fa fa-star"></i><i class="fa fa-star-o"></i></li>
@@ -260,15 +260,6 @@
           <input type="submit" id="submit" name="send" class="btn btn-outline btn-outline outline-dark" value="Envoyer">
           <div id="simple-msg"></div>
           </form>
-         <script type="text/javascript">
-        function addFeedback(that){
-        	alert(`${that.nom.value}, ${that.email.value}, ${that.note.value}`)
-        	fetch(`/CleanUp/addFeedback?nom=${that.nom.value}&email=${that.email.value}&note=${that.note.value}`,{
-        		method:"POST"
-        	})
-        }
-        
-        </script>
       </div>
       			</div>
 		</div><!-- /.row-->

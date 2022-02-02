@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Cleaner,models.Position,services.CleanerService"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="frensh">
   <head>
@@ -393,12 +393,39 @@
 
                   <div class="col-md-12">
                     <div class="table-responsive mt-5" style="clear: both">
+                     <script type="text/javascript">
+                              function update_cleaner(Id, Nom, Prenom, DateNaissance, Sexe,Telephone, Email, MotDePasse, DateEmploi, Ramassage){
+                              	sessionStorage.setItem("cleaner_id", Id)
+                              	sessionStorage.setItem("nom", Nom)
+                              	sessionStorage.setItem("prenom", Prenom)
+                              	sessionStorage.setItem("date_de_naissance", DateNaissance)
+                              	sessionStorage.setItem("sexe", Sexe)
+                              	sessionStorage.setItem("telephone", Telephone)
+                              	sessionStorage.setItem("email", Email)
+                              	sessionStorage.setItem("mot_de_passe", MotDePasse)
+                              	sessionStorage.setItem("date_emploi", DateEmploi)
+                              	sessionStorage.setItem("adresses_de_ramassage", Ramassage)
+                              	console.log(Id, Nom,Prenom,DateNaissance,Sexe,Telephone, Email,MotDePasse,DateEmploi,Ramassage)
+                              	
+                              	location.href="/CleanUp/admin/cleaner/update.jsp"
+                              }
+                              
+                              function delete_cleaner(cleaner_id){
+                              	fetch("/CleanUp/deletePosition?position_id="+cleaner_id
+                              			,{
+                              	method:'POST'
+                              	})
+                                  .then(()=>{
+                                  	location.reload()
+                                  	})
+                                  }
+                          </script>
                       <table class="table table-hover">
                         <thead>
                           <tr>
                             <th class="text-center">Numéro</th>
                             <th class="text-center">Nom </th>
-                            <th class="text-center">Sexe et age </th>
+                            <th class="text-center">Sexe et date de naissance </th>
                             <th class="text-center">Téléphone</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Mot de passe </th>
@@ -407,24 +434,34 @@
                           </tr>
                         </thead>
                         <tbody>
+                        <% CleanerService cleanerService = new CleanerService();
+                           PositionService positionService = new PositionService();
+                            List<Cleaner> listCleaners = cleanerService.readAllCleaners(); %>
+                            <%int i=1; %>
+                            <%for(Cleaner cleaner:listCleaners){ %>
+                            <%Position _position = positionService.readPosition(cleaner.getAdressesDeRamassage());
+                            String position = _position.getVille()+","+_position.getQuartier()+","+_position.getLocalisation();
+                            %>
                           <tr>
-                            <td class="text-center">010122-1</td>
-                            <td> ahmed mansour</td>
-                            <td class="text-center"> 30 ans homme </td>
-                            <td class="text-center">0601010101</td>
-                            <td class="text-center">ahmedmansour.cleanup@gmail.com</td>
-                            <td class="text-center">ahmedman@</td>
-                            <td >-anassi <br> -lmansour</td>
+                            <td class="text-center"><%=i %></td>
+                            <td> <%=cleaner.getNom()%> <%=cleaner.getPrenom()%></td>
+                            <td class="text-center"> <%=cleaner.getDateDeNaissance() %>/<%=cleaner.getSexe() %></td>
+                            <td class="text-center"><%=cleaner.getTelephone() %></td>
+                            <td class="text-center"><%=cleaner.getEmail() %></td>
+                            <td class="text-center"><%=cleaner.getMotDePasse() %></td>
+                            <td ><%=position %></td>
                             <td class="text-center">
-                            <button type="button" class=" badge bg-danger " >
+                            <button onclick="delete_cleaner('<%=cleaner.getCleanerId()%>')"  type="button" class=" badge bg-danger " >
                             <i class="fas fa-trash-alt"></i> 
                             </button>
-                            <button type="button" class=" badge bg-info " > 
+                            <button onclick="update_cleaner('<%=cleaner.getCleanerId() %>','<%=cleaner.getNom()%>','<%=cleaner.getPrenom() %>','<%=cleaner.getDateDeNaissance()%>',,'<%=cleaner.getSexe() %>','<%=cleaner.getTelephone() %>','<%=cleaner.getEmail() %>','<%=cleaner.getMotDePasse() %>','<%=cleaner.getDateEmploi()%>','<%=cleaner.getAdressesDeRamassage()%>')"type="button" class=" badge bg-info " > 
                             <i class="far fa-edit"></i>
                             </button>
                             
                             </td>
                           </tr>
+                          <%i++;%>
+                          <%}%>
                           
                         </tbody>
                       </table>

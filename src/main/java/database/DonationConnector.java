@@ -23,11 +23,10 @@ public class DonationConnector {
 	public boolean createDonation (Donation donation) {
 		
 		try {
-			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `donation` (`type`, `quantite`, `date_de_ramassage`, `date_de_ramassage`, `eboueur_charge` ) VALUES (?,?,?,?,?)");
+			PreparedStatement ps = cnx.prepareStatement("INSERT INTO `donation` (`type`, `quantite`, `date_de_ramassage`, `eboueur_charge` ) VALUES (?,?,?,?);");
 			ps.setString(1,donation.getType());
 			ps.setString(2,donation.getQuantite());
 			ps.setDate(3,donation.getDateDeRamassage());
-			ps.setDate(4,donation.getDateDeModification());
 			ps.setLong(5,donation.getEboueurCharge());
 			ps.executeUpdate();	
 			System.out.println("creation succeeded !");

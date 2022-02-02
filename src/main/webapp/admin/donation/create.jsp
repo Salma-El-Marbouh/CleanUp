@@ -389,7 +389,7 @@
             
               <div class="card">
            
-                <form class="form-horizontal">
+                <form action="/CleanUp/addDonation" method="post" class="form-horizontal">
                   <div class="card-body">
                     <h4 class="card-title">Informations  </h4>
                     <br>
@@ -432,6 +432,7 @@
                           type="Date"
                           class="form-control"
                           id="lname"
+                          name="date_de_ramassage"
                          
                           />
                       </div>

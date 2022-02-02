@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,java.sql.*,services.PositionService,models.Position"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="frensh">
   <head>
@@ -389,18 +389,19 @@
             
               <div class="card">
            
-                <form action="/CleanUp/addPosition"  method="post" class="form-horizontal" >
+                <form action="/CleanUp/updatePosition"  method="post" class="form-horizontal" >
                   <div class="card-body">
                     <h4 class="card-title">Information du point de récupération</h4>
                     <br>
                     <br>
+                    <input name="position_id" type="hidden" id="position_id"/>
                     <div class="form-group row">
                       <label class="col-md-3 mt-3">Ville</label>
                       <div class="col-sm-9">
                         <input
                           type="text"
                           class="form-control"
-                          id="fname"
+                          id="villeId"
                           name="ville"
                           placeholder="Insérer la ville ici"
                         />
@@ -412,8 +413,9 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="lname"
+                          id="quartierId"
                           name="quartier"
+                          
                           placeholder="Insérer le quartier ici "
                         />
                       </div>
@@ -424,7 +426,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="lname"
+                          id="localisationId"
                           name="localisation"
                           placeholder="Insérer la localisation exacte ici"
                         />
@@ -434,12 +436,29 @@
                   <div class="border-top">
                     <div class="card-body">
                       <button type="submit" class="btn btn-primary">
-                        Enregistrer
+                        Modifier
                       </button>
                     </div>
                   </div>
                   </div>
                 </form>
+                <script type="text/javascript"> 
+                const position_id = document.getElementById("position_id")
+                const ville = document.getElementById("villeId")
+                const quartier = document.getElementById("quartierId")
+                const localisation = document.getElementById("localisationId")
+                
+                const myHeaders = new Headers()
+
+                position_id.value = sessionStorage.getItem("position_id")
+                
+                ville.value = sessionStorage.getItem("position_ville")
+                quartier.value = sessionStorage.getItem("position_quartier")
+                localisation.value = sessionStorage.getItem("position_localisation")
+                console.log(sessionStorage)
+                
+                
+                </script>
               </div>
          </div>         
          

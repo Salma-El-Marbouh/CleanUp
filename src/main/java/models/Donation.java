@@ -22,6 +22,14 @@ public class Donation {
 		this.setEboueurCharge(eboueur_charge);
 		
 	}
+	
+	public Donation(String type, String quantite, Date date_de_ramassage, int eboueur_charge) {
+		this.setType(type);
+		this.setQuantite(quantite);
+		this.setDateDeRamassage(date_de_ramassage);
+		this.setEboueurCharge(eboueur_charge);
+		
+	}
 
 	public int getDonationId() {
 		return donation_id;
